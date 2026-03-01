@@ -1,0 +1,1700 @@
+{
+  "mutations": {
+    "Gold": {
+      "name": "Gold",
+      "baseChance": 0.01,
+      "coinMultiplier": 25
+    },
+    "Rainbow": {
+      "name": "Rainbow",
+      "baseChance": 0.001,
+      "coinMultiplier": 50
+    },
+    "Wet": {
+      "name": "Wet",
+      "baseChance": 0,
+      "coinMultiplier": 2
+    },
+    "Chilled": {
+      "name": "Chilled",
+      "baseChance": 0,
+      "coinMultiplier": 2
+    },
+    "Frozen": {
+      "name": "Frozen",
+      "baseChance": 0,
+      "coinMultiplier": 6
+    },
+    "Thunderstruck": {
+      "name": "Thunderstruck",
+      "baseChance": 0,
+      "coinMultiplier": 5
+    },
+    "Dawnlit": {
+      "name": "Dawnlit",
+      "baseChance": 0,
+      "coinMultiplier": 4
+    },
+    "Ambershine": {
+      "name": "Amberlit",
+      "baseChance": 0,
+      "coinMultiplier": 6
+    },
+    "Dawncharged": {
+      "name": "Dawnbound",
+      "baseChance": 0,
+      "coinMultiplier": 7
+    },
+    "Ambercharged": {
+      "name": "Amberbound",
+      "baseChance": 0,
+      "coinMultiplier": 10
+    }
+  },
+  "weather_events": {
+    "Rain": {
+      "groupId": "Hydro",
+      "name": "Rain",
+      "mutation": "Wet",
+      "chancePerMinutePerCrop": 7
+    },
+    "Frost": {
+      "groupId": "Hydro",
+      "name": "Snow",
+      "mutation": "Chilled",
+      "chancePerMinutePerCrop": 7
+    },
+    "Thunderstorm": {
+      "groupId": "Hydro",
+      "name": "Thunderstorm",
+      "mutation": "Thunderstruck",
+      "chancePerMinutePerCrop": 7
+    },
+    "Dawn": {
+      "groupId": "Lunar",
+      "name": "Dawn",
+      "mutation": "Dawnlit",
+      "chancePerMinutePerCrop": 1
+    },
+    "AmberMoon": {
+      "groupId": "Lunar",
+      "name": "Amber Moon",
+      "mutation": "Ambershine",
+      "chancePerMinutePerCrop": 1
+    }
+  },
+  "plant_abilities": {
+    "MoonKisser": {
+      "name": "Amberbinder",
+      "trigger": "weather",
+      "mutationChancePerMinute": 25,
+      "requiredWeather": "AmberMoon",
+      "sourceMutation": "Ambershine",
+      "targetMutation": "Ambercharged",
+      "tileRadius": 1
+    },
+    "DawnKisser": {
+      "name": "Dawnbinder",
+      "trigger": "weather",
+      "mutationChancePerMinute": 25,
+      "requiredWeather": "Dawn",
+      "sourceMutation": "Dawnlit",
+      "targetMutation": "Dawncharged",
+      "tileRadius": 1
+    }
+  },
+  "eggs": {
+    "CommonEgg": {
+      "name": "Common Egg",
+      "coinPrice": 100000,
+      "creditPrice": 19,
+      "rarity": "Common",
+      "secondsToHatch": 600,
+      "spawns": {
+        "Worm": 60,
+        "Snail": 35,
+        "Bee": 5
+      }
+    },
+    "UncommonEgg": {
+      "name": "Uncommon Egg",
+      "coinPrice": 1000000,
+      "creditPrice": 48,
+      "rarity": "Uncommon",
+      "secondsToHatch": 3600,
+      "spawns": {
+        "Chicken": 65,
+        "Bunny": 25,
+        "Dragonfly": 10
+      }
+    },
+    "RareEgg": {
+      "name": "Rare Egg",
+      "coinPrice": 10000000,
+      "creditPrice": 99,
+      "rarity": "Rare",
+      "secondsToHatch": 21600,
+      "spawns": {
+        "Pig": 80,
+        "Cow": 15,
+        "Turkey": 5
+      }
+    },
+    "LegendaryEgg": {
+      "name": "Legendary Egg",
+      "coinPrice": 100000000,
+      "creditPrice": 249,
+      "rarity": "Legendary",
+      "secondsToHatch": 43200,
+      "spawns": {
+        "Squirrel": 60,
+        "Turtle": 30,
+        "Goat": 10
+      }
+    },
+    "SnowEgg": {
+      "name": "Snow Egg",
+      "coinPrice": 200000000,
+      "creditPrice": 269,
+      "rarity": "Legendary",
+      "secondsToHatch": 43200,
+      "spawns": {
+        "SnowFox": 75,
+        "Stoat": 20,
+        "WhiteCaribou": 5
+      },
+      "requiredWeather": "Frost"
+    },
+    "HorseEgg": {
+      "name": "Horse Egg",
+      "coinPrice": 200000000,
+      "creditPrice": 379,
+      "rarity": "Legendary",
+      "secondsToHatch": 43200,
+      "spawns": {
+        "Pony": 60,
+        "Horse": 35,
+        "FireHorse": 5
+      }
+    },
+    "MythicalEgg": {
+      "name": "Mythical Egg",
+      "coinPrice": 1000000000,
+      "creditPrice": 599,
+      "rarity": "Mythic",
+      "secondsToHatch": 86400,
+      "spawns": {
+        "Butterfly": 75,
+        "Peacock": 20,
+        "Capybara": 5
+      }
+    },
+    "WinterEgg": {
+      "name": "Winter Egg",
+      "coinPrice": 80000000,
+      "creditPrice": 199,
+      "rarity": "Legendary",
+      "secondsToHatch": 43200,
+      "spawns": {
+        "SnowFox": 75,
+        "Stoat": 20,
+        "WhiteCaribou": 5
+      }
+    }
+  },
+  "abilities": {
+    "CoinFinderI": {
+      "name": "Coin Finder I",
+      "trigger": "continuous",
+      "baseProbability": 35,
+      "params": {
+        "baseMaxCoinsFindable": 120000
+      }
+    },
+    "CoinFinderII": {
+      "name": "Coin Finder II",
+      "trigger": "continuous",
+      "baseProbability": 13,
+      "params": {
+        "baseMaxCoinsFindable": 1200000
+      }
+    },
+    "CoinFinderIII": {
+      "name": "Coin Finder III",
+      "trigger": "continuous",
+      "baseProbability": 6,
+      "params": {
+        "baseMaxCoinsFindable": 10000000
+      }
+    },
+    "SnowyCoinFinder": {
+      "name": "Snow Coin Finder",
+      "trigger": "continuous",
+      "baseProbability": 15,
+      "params": {
+        "baseMaxCoinsFindable": 5000000,
+        "requiredWeather": "Frost"
+      }
+    },
+    "SeedFinderI": {
+      "name": "Seed Finder I",
+      "trigger": "continuous",
+      "baseProbability": 40,
+      "params": {}
+    },
+    "SeedFinderII": {
+      "name": "Seed Finder II",
+      "trigger": "continuous",
+      "baseProbability": 20,
+      "params": {}
+    },
+    "SeedFinderIII": {
+      "name": "Seed Finder III",
+      "trigger": "continuous",
+      "baseProbability": 10,
+      "params": {}
+    },
+    "SeedFinderIV": {
+      "name": "Seed Finder IV",
+      "trigger": "continuous",
+      "baseProbability": 0.01,
+      "params": {}
+    },
+    "PlantGrowthBoost": {
+      "name": "Plant Growth Boost I",
+      "trigger": "continuous",
+      "baseProbability": 24,
+      "params": {
+        "plantGrowthReductionMinutes": 3
+      }
+    },
+    "PlantGrowthBoostII": {
+      "name": "Plant Growth Boost II",
+      "trigger": "continuous",
+      "baseProbability": 27,
+      "params": {
+        "plantGrowthReductionMinutes": 5
+      }
+    },
+    "PlantGrowthBoostIII": {
+      "name": "Plant Growth Boost III",
+      "trigger": "continuous",
+      "baseProbability": 30,
+      "params": {
+        "plantGrowthReductionMinutes": 7
+      }
+    },
+    "SnowyPlantGrowthBoost": {
+      "name": "Snow Plant Growth Boost",
+      "trigger": "continuous",
+      "baseProbability": 40,
+      "params": {
+        "plantGrowthReductionMinutes": 6,
+        "requiredWeather": "Frost"
+      }
+    },
+    "DawnPlantGrowthBoost": {
+      "name": "Dawn Plant Growth Boost",
+      "trigger": "continuous",
+      "baseProbability": 60,
+      "params": {
+        "plantGrowthReductionMinutes": 6,
+        "requiredWeather": "Dawn"
+      }
+    },
+    "AmberPlantGrowthBoost": {
+      "name": "Amber Plant Growth Boost",
+      "trigger": "continuous",
+      "baseProbability": 80,
+      "params": {
+        "plantGrowthReductionMinutes": 6,
+        "requiredWeather": "AmberMoon"
+      }
+    },
+    "ProduceEater": {
+      "name": "Crop Eater",
+      "trigger": "continuous",
+      "baseProbability": 60,
+      "params": {
+        "cropSellPriceIncreasePercentage": 150
+      }
+    },
+    "ProduceScaleBoost": {
+      "name": "Crop Size Boost I",
+      "trigger": "continuous",
+      "baseProbability": 0.3,
+      "params": {
+        "scaleIncreasePercentage": 6
+      }
+    },
+    "ProduceScaleBoostII": {
+      "name": "Crop Size Boost II",
+      "trigger": "continuous",
+      "baseProbability": 0.4,
+      "params": {
+        "scaleIncreasePercentage": 10
+      }
+    },
+    "ProduceScaleBoostIII": {
+      "name": "Crop Size Boost III",
+      "trigger": "continuous",
+      "baseProbability": 0.5,
+      "params": {
+        "scaleIncreasePercentage": 14
+      }
+    },
+    "SnowyCropSizeBoost": {
+      "name": "Snow Crop Size Boost",
+      "trigger": "continuous",
+      "baseProbability": 0.8,
+      "params": {
+        "scaleIncreasePercentage": 12,
+        "requiredWeather": "Frost"
+      }
+    },
+    "ProduceMutationBoost": {
+      "name": "Weather Mutation Boost I",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 15
+      }
+    },
+    "ProduceMutationBoostII": {
+      "name": "Weather Mutation Boost II",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 20
+      }
+    },
+    "ProduceMutationBoostIII": {
+      "name": "Weather Mutation Boost III",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 25
+      }
+    },
+    "SnowyCropMutationBoost": {
+      "name": "Snow Boost",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 32,
+        "requiredWeather": "Frost"
+      }
+    },
+    "DawnBoost": {
+      "name": "Dawn Boost",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 36,
+        "requiredWeather": "Dawn"
+      }
+    },
+    "AmberMoonBoost": {
+      "name": "Amber Moon Boost",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 40,
+        "requiredWeather": "AmberMoon"
+      }
+    },
+    "EggGrowthBoost": {
+      "name": "Egg Growth Boost I",
+      "trigger": "continuous",
+      "baseProbability": 21,
+      "params": {
+        "eggGrowthTimeReductionMinutes": 7
+      }
+    },
+    "EggGrowthBoostII_NEW": {
+      "name": "Egg Growth Boost II",
+      "trigger": "continuous",
+      "baseProbability": 24,
+      "params": {
+        "eggGrowthTimeReductionMinutes": 9
+      }
+    },
+    "EggGrowthBoostII": {
+      "name": "Egg Growth Boost III",
+      "trigger": "continuous",
+      "baseProbability": 27,
+      "params": {
+        "eggGrowthTimeReductionMinutes": 11
+      }
+    },
+    "SnowyEggGrowthBoost": {
+      "name": "Snowy Egg Growth Boost",
+      "trigger": "continuous",
+      "baseProbability": 35,
+      "params": {
+        "eggGrowthTimeReductionMinutes": 10,
+        "requiredWeather": "Frost"
+      }
+    },
+    "PetXpBoost": {
+      "name": "XP Boost I",
+      "trigger": "continuous",
+      "baseProbability": 30,
+      "params": {
+        "bonusXp": 300
+      }
+    },
+    "PetXpBoostII": {
+      "name": "XP Boost II",
+      "trigger": "continuous",
+      "baseProbability": 35,
+      "params": {
+        "bonusXp": 400
+      }
+    },
+    "PetXpBoostIII": {
+      "name": "XP Boost III",
+      "trigger": "continuous",
+      "baseProbability": 40,
+      "params": {
+        "bonusXp": 500
+      }
+    },
+    "SnowyPetXpBoost": {
+      "name": "Snow XP Boost",
+      "trigger": "continuous",
+      "baseProbability": 50,
+      "params": {
+        "bonusXp": 450,
+        "requiredWeather": "Frost"
+      }
+    },
+    "HungerBoost": {
+      "name": "Hunger Boost I",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "hungerDepletionRateDecreasePercentage": 12
+      }
+    },
+    "HungerBoostII": {
+      "name": "Hunger Boost II",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "hungerDepletionRateDecreasePercentage": 16
+      }
+    },
+    "HungerBoostIII": {
+      "name": "Hunger Boost III",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "hungerDepletionRateDecreasePercentage": 20
+      }
+    },
+    "SnowyHungerBoost": {
+      "name": "Snow Hunger Boost",
+      "trigger": "continuous",
+      "baseProbability": null,
+      "params": {
+        "hungerDepletionRateDecreasePercentage": 30,
+        "requiredWeather": "Frost"
+      }
+    },
+    "HungerRestore": {
+      "name": "Hunger Restore I",
+      "trigger": "continuous",
+      "baseProbability": 12,
+      "params": {
+        "hungerRestorePercentage": 30
+      }
+    },
+    "HungerRestoreII": {
+      "name": "Hunger Restore II",
+      "trigger": "continuous",
+      "baseProbability": 14,
+      "params": {
+        "hungerRestorePercentage": 35
+      }
+    },
+    "HungerRestoreIII": {
+      "name": "Hunger Restore III",
+      "trigger": "continuous",
+      "baseProbability": 16,
+      "params": {
+        "hungerRestorePercentage": 40
+      }
+    },
+    "SnowyHungerRestore": {
+      "name": "Snow Hunger Restore",
+      "trigger": "continuous",
+      "baseProbability": 20,
+      "params": {
+        "hungerRestorePercentage": 38,
+        "requiredWeather": "Frost"
+      }
+    },
+    "PetMutationBoost": {
+      "name": "Pet Mutation Boost I",
+      "trigger": "hatchEgg",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 7
+      }
+    },
+    "PetMutationBoostII": {
+      "name": "Pet Mutation Boost II",
+      "trigger": "hatchEgg",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 10
+      }
+    },
+    "PetMutationBoostIII": {
+      "name": "Pet Mutation Boost III",
+      "trigger": "hatchEgg",
+      "baseProbability": null,
+      "params": {
+        "mutationChanceIncreasePercentage": 13
+      }
+    },
+    "SellBoostI": {
+      "name": "Sell Boost I",
+      "trigger": "sellAllCrops",
+      "baseProbability": 10,
+      "params": {
+        "cropSellPriceIncreasePercentage": 20
+      }
+    },
+    "SellBoostII": {
+      "name": "Sell Boost II",
+      "trigger": "sellAllCrops",
+      "baseProbability": 12,
+      "params": {
+        "cropSellPriceIncreasePercentage": 30
+      }
+    },
+    "SellBoostIII": {
+      "name": "Sell Boost III",
+      "trigger": "sellAllCrops",
+      "baseProbability": 14,
+      "params": {
+        "cropSellPriceIncreasePercentage": 40
+      }
+    },
+    "SellBoostIV": {
+      "name": "Sell Boost IV",
+      "trigger": "sellAllCrops",
+      "baseProbability": 16,
+      "params": {
+        "cropSellPriceIncreasePercentage": 50
+      }
+    },
+    "ProduceRefund": {
+      "name": "Crop Refund",
+      "trigger": "sellAllCrops",
+      "baseProbability": 20,
+      "params": {}
+    },
+    "DoubleHarvest": {
+      "name": "Double Harvest",
+      "trigger": "harvest",
+      "baseProbability": 5,
+      "params": {}
+    },
+    "PetAgeBoost": {
+      "name": "Hatch XP Boost I",
+      "trigger": "hatchEgg",
+      "baseProbability": 50,
+      "params": {
+        "bonusXp": 8000
+      }
+    },
+    "PetAgeBoostII": {
+      "name": "Hatch XP Boost II",
+      "trigger": "hatchEgg",
+      "baseProbability": 60,
+      "params": {
+        "bonusXp": 12000
+      }
+    },
+    "PetAgeBoostIII": {
+      "name": "Hatch XP Boost III",
+      "trigger": "hatchEgg",
+      "baseProbability": 70,
+      "params": {
+        "bonusXp": 16000
+      }
+    },
+    "PetHatchSizeBoost": {
+      "name": "Max Strength Boost I",
+      "trigger": "hatchEgg",
+      "baseProbability": 12,
+      "params": {
+        "maxStrengthIncreasePercentage": 2.4
+      }
+    },
+    "PetHatchSizeBoostII": {
+      "name": "Max Strength Boost II",
+      "trigger": "hatchEgg",
+      "baseProbability": 14,
+      "params": {
+        "maxStrengthIncreasePercentage": 3.5
+      }
+    },
+    "PetHatchSizeBoostIII": {
+      "name": "Max Strength Boost III",
+      "trigger": "hatchEgg",
+      "baseProbability": 16,
+      "params": {
+        "maxStrengthIncreasePercentage": 4.6
+      }
+    },
+    "DoubleHatch": {
+      "name": "Double Hatch",
+      "trigger": "hatchEgg",
+      "baseProbability": 3,
+      "params": {}
+    },
+    "PetRefund": {
+      "name": "Pet Refund I",
+      "trigger": "sellPet",
+      "baseProbability": 5,
+      "params": {}
+    },
+    "PetRefundII": {
+      "name": "Pet Refund II",
+      "trigger": "sellPet",
+      "baseProbability": 7,
+      "params": {}
+    },
+    "RainDance": {
+      "name": "Rain Granter",
+      "trigger": "continuous",
+      "baseProbability": 10,
+      "params": {
+        "grantedMutations": [
+          "Wet"
+        ]
+      }
+    },
+    "SnowGranter": {
+      "name": "Snow Granter",
+      "trigger": "continuous",
+      "baseProbability": 8,
+      "params": {
+        "grantedMutations": [
+          "Chilled"
+        ]
+      }
+    },
+    "FrostGranter": {
+      "name": "Frost Granter",
+      "trigger": "continuous",
+      "baseProbability": 6,
+      "params": {
+        "grantedMutations": [
+          "Frozen"
+        ]
+      }
+    },
+    "DawnlitGranter": {
+      "name": "Dawnlit Granter",
+      "trigger": "continuous",
+      "baseProbability": 4,
+      "params": {
+        "grantedMutations": [
+          "Dawnlit"
+        ]
+      }
+    },
+    "AmberlitGranter": {
+      "name": "Amberlit Granter",
+      "trigger": "continuous",
+      "baseProbability": 2,
+      "params": {
+        "grantedMutations": [
+          "Ambershine"
+        ]
+      }
+    },
+    "GoldGranter": {
+      "name": "Gold Granter",
+      "trigger": "continuous",
+      "baseProbability": 0.72,
+      "params": {
+        "grantedMutations": [
+          "Gold"
+        ]
+      }
+    },
+    "RainbowGranter": {
+      "name": "Rainbow Granter",
+      "trigger": "continuous",
+      "baseProbability": 0.72,
+      "params": {
+        "grantedMutations": [
+          "Rainbow"
+        ]
+      }
+    },
+    "Copycat": {
+      "name": "Copycat",
+      "trigger": "continuous",
+      "baseProbability": 1,
+      "params": {}
+    }
+  },
+  "pets": {
+    "Worm": {
+      "name": "Worm",
+      "hunger": 500,
+      "maxScale": 2,
+      "maturitySellPrice": 5000,
+      "matureWeight": 0.1,
+      "hoursToMature": 12,
+      "rarity": "Common",
+      "abilities": {
+        "SeedFinderI": 50,
+        "ProduceEater": 50
+      },
+      "diet": [
+        "Carrot",
+        "Strawberry",
+        "Aloe",
+        "Tomato",
+        "Apple"
+      ]
+    },
+    "Snail": {
+      "name": "Snail",
+      "hunger": 1000,
+      "maxScale": 2,
+      "maturitySellPrice": 10000,
+      "matureWeight": 0.15,
+      "hoursToMature": 12,
+      "rarity": "Common",
+      "abilities": {
+        "CoinFinderI": 100
+      },
+      "diet": [
+        "Blueberry",
+        "Tomato",
+        "Corn",
+        "Daffodil",
+        "Chrysanthemum"
+      ]
+    },
+    "Bee": {
+      "name": "Bee",
+      "hunger": 1500,
+      "maxScale": 2.5,
+      "maturitySellPrice": 30000,
+      "matureWeight": 0.2,
+      "hoursToMature": 12,
+      "rarity": "Common",
+      "abilities": {
+        "ProduceScaleBoost": 50,
+        "ProduceMutationBoost": 50
+      },
+      "diet": [
+        "Strawberry",
+        "Blueberry",
+        "Daffodil",
+        "Lily",
+        "Chrysanthemum"
+      ]
+    },
+    "Chicken": {
+      "name": "Chicken",
+      "hunger": 3000,
+      "maxScale": 2,
+      "maturitySellPrice": 50000,
+      "matureWeight": 3,
+      "hoursToMature": 24,
+      "rarity": "Uncommon",
+      "abilities": {
+        "EggGrowthBoost": 80,
+        "PetRefund": 20
+      },
+      "diet": [
+        "Aloe",
+        "Corn",
+        "Watermelon",
+        "Pumpkin"
+      ]
+    },
+    "Bunny": {
+      "name": "Bunny",
+      "hunger": 750,
+      "maxScale": 2,
+      "maturitySellPrice": 75000,
+      "matureWeight": 2,
+      "hoursToMature": 24,
+      "rarity": "Uncommon",
+      "abilities": {
+        "CoinFinderII": 60,
+        "SellBoostI": 40
+      },
+      "diet": [
+        "Carrot",
+        "Strawberry",
+        "Blueberry",
+        "OrangeTulip",
+        "Apple"
+      ]
+    },
+    "Dragonfly": {
+      "name": "Dragonfly",
+      "hunger": 250,
+      "maxScale": 2.5,
+      "maturitySellPrice": 150000,
+      "matureWeight": 0.2,
+      "hoursToMature": 24,
+      "rarity": "Uncommon",
+      "abilities": {
+        "HungerRestore": 70,
+        "PetMutationBoost": 30
+      },
+      "diet": [
+        "Apple",
+        "OrangeTulip",
+        "Echeveria"
+      ]
+    },
+    "Pig": {
+      "name": "Pig",
+      "hunger": 50000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 500000,
+      "matureWeight": 200,
+      "hoursToMature": 72,
+      "rarity": "Rare",
+      "abilities": {
+        "SellBoostII": 30,
+        "PetAgeBoost": 30,
+        "PetHatchSizeBoost": 30
+      },
+      "diet": [
+        "Watermelon",
+        "Pumpkin",
+        "Mushroom",
+        "Bamboo"
+      ]
+    },
+    "Cow": {
+      "name": "Cow",
+      "hunger": 25000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 1000000,
+      "matureWeight": 600,
+      "hoursToMature": 72,
+      "rarity": "Rare",
+      "abilities": {
+        "SeedFinderII": 30,
+        "HungerBoost": 30,
+        "PlantGrowthBoost": 30
+      },
+      "diet": [
+        "Coconut",
+        "Banana",
+        "BurrosTail",
+        "Mushroom"
+      ]
+    },
+    "Turkey": {
+      "name": "Turkey",
+      "hunger": 500,
+      "maxScale": 2.5,
+      "maturitySellPrice": 3000000,
+      "matureWeight": 10,
+      "hoursToMature": 72,
+      "rarity": "Rare",
+      "abilities": {
+        "RainDance": 60,
+        "EggGrowthBoostII_NEW": 35,
+        "DoubleHatch": 5
+      },
+      "diet": [
+        "FavaBean",
+        "Corn",
+        "Squash"
+      ]
+    },
+    "Squirrel": {
+      "name": "Squirrel",
+      "hunger": 15000,
+      "maxScale": 2,
+      "maturitySellPrice": 5000000,
+      "matureWeight": 0.5,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "CoinFinderIII": 70,
+        "SellBoostIII": 20,
+        "PetMutationBoostII": 10
+      },
+      "diet": [
+        "Pumpkin",
+        "Banana",
+        "Grape"
+      ]
+    },
+    "Turtle": {
+      "name": "Turtle",
+      "hunger": 100000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 10000000,
+      "matureWeight": 150,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "HungerRestoreII": 25,
+        "HungerBoostII": 25,
+        "PlantGrowthBoostII": 25,
+        "EggGrowthBoostII": 25
+      },
+      "diet": [
+        "Watermelon",
+        "BurrosTail",
+        "Bamboo",
+        "Pepper"
+      ]
+    },
+    "Goat": {
+      "name": "Goat",
+      "hunger": 20000,
+      "maxScale": 2,
+      "maturitySellPrice": 20000000,
+      "matureWeight": 100,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "PetHatchSizeBoostII": 10,
+        "PetAgeBoostII": 40,
+        "PetXpBoost": 40
+      },
+      "diet": [
+        "Pumpkin",
+        "Coconut",
+        "Pepper",
+        "Camellia",
+        "PassionFruit"
+      ]
+    },
+    "SnowFox": {
+      "name": "Snow Fox",
+      "hunger": 14000,
+      "maxScale": 2,
+      "maturitySellPrice": 7000000,
+      "matureWeight": 7.5,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "SnowGranter": 30,
+        "SnowyCoinFinder": 30,
+        "SnowyPetXpBoost": 30
+      },
+      "diet": [
+        "Echeveria",
+        "Squash",
+        "Grape"
+      ]
+    },
+    "Stoat": {
+      "name": "Stoat",
+      "hunger": 10000,
+      "maxScale": 2,
+      "maturitySellPrice": 10000000,
+      "matureWeight": 0.4,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "SnowGranter": 40,
+        "SnowyHungerBoost": 40,
+        "SnowyCropMutationBoost": 20
+      },
+      "diet": [
+        "Banana",
+        "Pepper",
+        "Cactus"
+      ]
+    },
+    "WhiteCaribou": {
+      "name": "Caribou",
+      "hunger": 30000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 15000000,
+      "matureWeight": 300,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "FrostGranter": 50,
+        "SnowyPlantGrowthBoost": 40,
+        "SnowyCropSizeBoost": 10
+      },
+      "diet": [
+        "Camellia",
+        "BurrosTail",
+        "Mushroom"
+      ]
+    },
+    "Pony": {
+      "name": "Pony",
+      "hunger": 4000,
+      "maxScale": 2,
+      "maturitySellPrice": 10000000,
+      "matureWeight": 200,
+      "hoursToMature": 72,
+      "rarity": "Legendary",
+      "abilities": {
+        "SellBoostIII": 25,
+        "CoinFinderIII": 25,
+        "HungerRestoreII": 25,
+        "SeedFinderII": 25
+      },
+      "diet": [
+        "Beet",
+        "Pear",
+        "Coconut"
+      ]
+    },
+    "Horse": {
+      "name": "Horse",
+      "hunger": 25000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 50000000,
+      "matureWeight": 80,
+      "hoursToMature": 100,
+      "rarity": "Legendary",
+      "abilities": {
+        "DawnBoost": 30,
+        "DawnlitGranter": 40,
+        "DawnPlantGrowthBoost": 10,
+        "PetAgeBoostII": 20
+      },
+      "diet": [
+        "Squash",
+        "Echeveria",
+        "Gentian"
+      ]
+    },
+    "FireHorse": {
+      "name": "Fire Horse",
+      "hunger": 200000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 150000000,
+      "matureWeight": 700,
+      "hoursToMature": 144,
+      "rarity": "Mythic",
+      "abilities": {
+        "AmberMoonBoost": 30,
+        "PetHatchSizeBoostII": 20,
+        "AmberlitGranter": 40,
+        "AmberPlantGrowthBoost": 10
+      },
+      "diet": [
+        "DragonFruit",
+        "Poinsettia",
+        "Cacao"
+      ]
+    },
+    "Butterfly": {
+      "name": "Butterfly",
+      "hunger": 25000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 50000000,
+      "matureWeight": 0.2,
+      "hoursToMature": 144,
+      "rarity": "Mythic",
+      "abilities": {
+        "ProduceScaleBoostII": 40,
+        "ProduceMutationBoostII": 40,
+        "SeedFinderIII": 20
+      },
+      "diet": [
+        "Daffodil",
+        "Lily",
+        "Grape",
+        "Lemon",
+        "Sunflower"
+      ]
+    },
+    "Peacock": {
+      "name": "Peacock",
+      "hunger": 100000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 100000000,
+      "matureWeight": 5,
+      "hoursToMature": 144,
+      "rarity": "Mythic",
+      "abilities": {
+        "SellBoostIV": 40,
+        "PetXpBoostII": 50,
+        "PetRefundII": 10
+      },
+      "diet": [
+        "Cactus",
+        "Sunflower",
+        "Lychee"
+      ]
+    },
+    "Capybara": {
+      "name": "Capybara",
+      "hunger": 150000,
+      "maxScale": 2.5,
+      "maturitySellPrice": 200000000,
+      "matureWeight": 50,
+      "hoursToMature": 144,
+      "rarity": "Mythic",
+      "abilities": {
+        "DoubleHarvest": 50,
+        "ProduceRefund": 50
+      },
+      "diet": [
+        "Lemon",
+        "PassionFruit",
+        "DragonFruit",
+        "Lychee"
+      ]
+    }
+  },
+  "crops": {
+    "Carrot": {
+      "seedPrice": 10,
+      "sellPrice": 20,
+      "baseWeight": 0.1,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Cabbage": {
+      "seedPrice": 30,
+      "sellPrice": 42,
+      "baseWeight": 1,
+      "maxScale": 3,
+      "harvestType": "Multiple",
+      "slots": 1,
+      "secondsToMature": 45
+    },
+    "Strawberry": {
+      "seedPrice": 50,
+      "sellPrice": 14,
+      "baseWeight": 0.05,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 5,
+      "secondsToMature": 70
+    },
+    "Aloe": {
+      "seedPrice": 135,
+      "sellPrice": 310,
+      "baseWeight": 1.5,
+      "maxScale": 2.5,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Beet": {
+      "seedPrice": 210,
+      "sellPrice": 350,
+      "baseWeight": 0.3,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Rose": {
+      "seedPrice": 229,
+      "sellPrice": 300,
+      "baseWeight": 0.01,
+      "maxScale": 4,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "FavaBean": {
+      "seedPrice": 250,
+      "sellPrice": 30,
+      "baseWeight": 0.03,
+      "maxScale": 3,
+      "harvestType": "Multiple",
+      "slots": 8,
+      "secondsToMature": 900
+    },
+    "Delphinium": {
+      "seedPrice": 300,
+      "sellPrice": 530,
+      "baseWeight": 0.02,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Blueberry": {
+      "seedPrice": 400,
+      "sellPrice": 23,
+      "baseWeight": 0.01,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 5,
+      "secondsToMature": 105
+    },
+    "Apple": {
+      "seedPrice": 500,
+      "sellPrice": 73,
+      "baseWeight": 0.18,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 7,
+      "secondsToMature": 21600
+    },
+    "OrangeTulip": {
+      "seedPrice": 600,
+      "sellPrice": 767,
+      "baseWeight": 0.01,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null,
+      "displayName": "Tulip"
+    },
+    "Tomato": {
+      "seedPrice": 800,
+      "sellPrice": 27,
+      "baseWeight": 0.3,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 2,
+      "secondsToMature": 1100
+    },
+    "Daffodil": {
+      "seedPrice": 1000,
+      "sellPrice": 1090,
+      "baseWeight": 0.01,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Corn": {
+      "seedPrice": 1300,
+      "sellPrice": 36,
+      "baseWeight": 1.2,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 1,
+      "secondsToMature": 130
+    },
+    "Watermelon": {
+      "seedPrice": 2500,
+      "sellPrice": 2708,
+      "baseWeight": 4.5,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Pumpkin": {
+      "seedPrice": 3000,
+      "sellPrice": 3700,
+      "baseWeight": 6,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Echeveria": {
+      "seedPrice": 4200,
+      "sellPrice": 4600,
+      "baseWeight": 0.8,
+      "maxScale": 2.75,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Pear": {
+      "seedPrice": 6000,
+      "sellPrice": 250,
+      "baseWeight": 0.17,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 7,
+      "secondsToMature": 21600
+    },
+    "Gentian": {
+      "seedPrice": 9000,
+      "sellPrice": 10000,
+      "baseWeight": 0.02,
+      "maxScale": 3,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Coconut": {
+      "seedPrice": 10000,
+      "sellPrice": 302,
+      "baseWeight": 5,
+      "maxScale": 3,
+      "harvestType": "Multiple",
+      "slots": 7,
+      "secondsToMature": 43200
+    },
+    "PineTree": {
+      "seedPrice": 12000,
+      "sellPrice": 15000,
+      "baseWeight": 1000,
+      "maxScale": 3.5,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Banana": {
+      "seedPrice": 15000,
+      "sellPrice": 1750,
+      "baseWeight": 0.12,
+      "maxScale": 1.7,
+      "harvestType": "Multiple",
+      "slots": 5,
+      "secondsToMature": 14400
+    },
+    "Lily": {
+      "seedPrice": 20000,
+      "sellPrice": 20123,
+      "baseWeight": 0.02,
+      "maxScale": 2.75,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Camellia": {
+      "seedPrice": 55000,
+      "sellPrice": 4875,
+      "baseWeight": 0.3,
+      "maxScale": 2.5,
+      "harvestType": "Multiple",
+      "slots": 8,
+      "secondsToMature": 86400
+    },
+    "Squash": {
+      "seedPrice": 55000,
+      "sellPrice": 3500,
+      "baseWeight": 0.3,
+      "maxScale": 2.5,
+      "harvestType": "Multiple",
+      "slots": 3,
+      "secondsToMature": 1500
+    },
+    "Peach": {
+      "seedPrice": 85000,
+      "sellPrice": 9000,
+      "baseWeight": 0.18,
+      "maxScale": 3,
+      "harvestType": "Multiple",
+      "slots": 7,
+      "secondsToMature": 7200
+    },
+    "BurrosTail": {
+      "seedPrice": 93000,
+      "sellPrice": 6000,
+      "baseWeight": 0.4,
+      "maxScale": 2.5,
+      "harvestType": "Multiple",
+      "slots": 2,
+      "secondsToMature": 1800
+    },
+    "Mushroom": {
+      "seedPrice": 150000,
+      "sellPrice": 160000,
+      "baseWeight": 2.5,
+      "maxScale": 3.5,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Cactus": {
+      "seedPrice": 250000,
+      "sellPrice": 261000,
+      "baseWeight": 1500,
+      "maxScale": 1.8,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Bamboo": {
+      "seedPrice": 400000,
+      "sellPrice": 500000,
+      "baseWeight": 1,
+      "maxScale": 2,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Poinsettia": {
+      "seedPrice": 500000,
+      "sellPrice": 30000,
+      "baseWeight": 0.02,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 4,
+      "secondsToMature": 10800
+    },
+    "VioletCort": {
+      "seedPrice": 520000,
+      "sellPrice": 600000,
+      "baseWeight": 2,
+      "maxScale": 3.5,
+      "harvestType": "Single",
+      "slots": null,
+      "secondsToMature": null
+    },
+    "Chrysanthemum": {
+      "seedPrice": 670000,
+      "sellPrice": 18000,
+      "baseWeight": 0.01,
+      "maxScale": 2.75,
+      "harvestType": "Multiple",
+      "slots": 7,
+      "secondsToMature": 86400
+    },
+    "Grape": {
+      "seedPrice": 850000,
+      "sellPrice": 12500,
+      "baseWeight": 3,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 1,
+      "secondsToMature": 86400
+    },
+    "Pepper": {
+      "seedPrice": 1000000,
+      "sellPrice": 7220,
+      "baseWeight": 0.5,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 9,
+      "secondsToMature": 560
+    },
+    "Lemon": {
+      "seedPrice": 2000000,
+      "sellPrice": 10000,
+      "baseWeight": 0.5,
+      "maxScale": 3,
+      "harvestType": "Multiple",
+      "slots": 6,
+      "secondsToMature": 43200
+    },
+    "PassionFruit": {
+      "seedPrice": 2750000,
+      "sellPrice": 24500,
+      "baseWeight": 9.5,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 2,
+      "secondsToMature": 86400
+    },
+    "DragonFruit": {
+      "seedPrice": 5000000,
+      "sellPrice": 24500,
+      "baseWeight": 8.4,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 7,
+      "secondsToMature": 600
+    },
+    "Cacao": {
+      "seedPrice": 10000000,
+      "sellPrice": 70000,
+      "baseWeight": 0.5,
+      "maxScale": 2.5,
+      "harvestType": "Multiple",
+      "slots": 6,
+      "secondsToMature": 86400
+    },
+    "Lychee": {
+      "seedPrice": 25000000,
+      "sellPrice": 50000,
+      "baseWeight": 9,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 6,
+      "secondsToMature": 86400
+    },
+    "Sunflower": {
+      "seedPrice": 100000000,
+      "sellPrice": 750000,
+      "baseWeight": 10,
+      "maxScale": 2.5,
+      "harvestType": "Multiple",
+      "slots": 1,
+      "secondsToMature": 86400
+    },
+    "Starweaver": {
+      "seedPrice": 1000000000,
+      "sellPrice": 10000000,
+      "baseWeight": 10,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 1,
+      "secondsToMature": 86400
+    },
+    "DawnCelestial": {
+      "seedPrice": 10000000000,
+      "sellPrice": 11000000,
+      "baseWeight": 6,
+      "maxScale": 2.5,
+      "harvestType": "Multiple",
+      "slots": 1,
+      "secondsToMature": 86400,
+      "displayName": "Dawnbinder",
+      "abilities": [
+        "DawnKisser"
+      ]
+    },
+    "MoonCelestial": {
+      "seedPrice": 50000000000,
+      "sellPrice": 11000000,
+      "baseWeight": 2,
+      "maxScale": 2,
+      "harvestType": "Multiple",
+      "slots": 3,
+      "secondsToMature": 86400,
+      "displayName": "Moonbinder",
+      "abilities": [
+        "MoonKisser"
+      ]
+    }
+  },
+  "tools": {
+    "WateringCan": {
+      "name": "Watering Can",
+      "coinPrice": 5000,
+      "creditPrice": 2,
+      "rarity": "Common",
+      "oneTime": false,
+      "maxQty": 99
+    },
+    "PlanterPot": {
+      "name": "Planter Pot",
+      "coinPrice": 25000,
+      "creditPrice": 5,
+      "rarity": "Common",
+      "oneTime": false
+    },
+    "CropCleanser": {
+      "name": "Crop Cleanser",
+      "coinPrice": 80000,
+      "creditPrice": 7,
+      "rarity": "Common",
+      "oneTime": false,
+      "maxQty": 99
+    },
+    "WetPotion": {
+      "name": "Wet Potion",
+      "coinPrice": 1000000001,
+      "creditPrice": "inf",
+      "rarity": "Common",
+      "oneTime": true,
+      "mutation": "Wet"
+    },
+    "ChilledPotion": {
+      "name": "Chilled Potion",
+      "coinPrice": 1000000002,
+      "creditPrice": "inf",
+      "rarity": "Common",
+      "oneTime": true,
+      "mutation": "Chilled"
+    },
+    "DawnlitPotion": {
+      "name": "Dawnlit Potion",
+      "coinPrice": 1000000003,
+      "creditPrice": "inf",
+      "rarity": "Uncommon",
+      "oneTime": true,
+      "mutation": "Dawnlit"
+    },
+    "Shovel": {
+      "name": "Garden Shovel",
+      "coinPrice": 1000000,
+      "creditPrice": 100,
+      "rarity": "Uncommon",
+      "oneTime": true
+    },
+    "FrozenPotion": {
+      "name": "Frozen Potion",
+      "coinPrice": 1000000004,
+      "creditPrice": "inf",
+      "rarity": "Rare",
+      "oneTime": true,
+      "mutation": "Frozen"
+    },
+    "AmberlitPotion": {
+      "name": "Amberlit Potion",
+      "coinPrice": 1000000005,
+      "creditPrice": "inf",
+      "rarity": "Rare",
+      "oneTime": true,
+      "mutation": "Ambershine"
+    },
+    "GoldPotion": {
+      "name": "Gold Potion",
+      "coinPrice": 1000000006,
+      "creditPrice": "inf",
+      "rarity": "Legendary",
+      "oneTime": true,
+      "mutation": "Gold"
+    },
+    "RainbowPotion": {
+      "name": "Rainbow Potion",
+      "coinPrice": 1000000007,
+      "creditPrice": "inf",
+      "rarity": "Celestial",
+      "oneTime": true,
+      "mutation": "Rainbow"
+    }
+  },
+  "constants": {
+    "maxInventorySlots": 100,
+    "petSlotsActive": 3,
+    "hoursForXp": 12,
+    "xpPerHour": 3600,
+    "minStrength": 80,
+    "maxStrength": 100,
+    "strengthRange": 30,
+    "petHutchCapacity": 25,
+    "decorShedCapacity": 25,
+    "seedSiloCapacity": 25,
+    "feedingTroughCapacity": 9,
+    "shopRestocks": {
+      "seed": {
+        "creditPrice": 19,
+        "intervalSeconds": 300
+      },
+      "egg": {
+        "creditPrice": 39,
+        "intervalSeconds": 900
+      },
+      "tool": {
+        "creditPrice": 13,
+        "intervalSeconds": 600
+      },
+      "decor": {
+        "creditPrice": 49,
+        "intervalSeconds": 3600
+      }
+    },
+    "instaGrowCostPerSecond": 0.0030555555555555557,
+    "friendBonusPerPlayer": 0.1,
+    "rarityTiers": [
+      "Common",
+      "Uncommon",
+      "Rare",
+      "Legendary",
+      "Mythical",
+      "Divine",
+      "Celestial"
+    ]
+  }
+}
