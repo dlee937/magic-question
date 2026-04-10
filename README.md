@@ -103,3 +103,21 @@ api/
 - **No LLM reformulation**: Query analysis is entirely rule-based. Only 1 LLM call per turn (generation).
 - **Internal↔display name mapping**: Game source uses `Ambercharged`, players type `Amberbound`. Registry handles bidirectional resolution.
 - **Weighted ability pools**: Wiki showed flat ability lists. Source code reveals weighted probability pools per pet, critical for strategy advice.
+
+## Legal & Data
+
+This project is an unaffiliated, non-commercial learning project. It is not
+endorsed by, sponsored by, or associated with the developers or publishers of
+Magic Garden.
+
+Game data in `data/source_truth.json` and any chunks generated from it were
+extracted from the publicly served game client JavaScript for personal study
+and to power this local RAG prototype. All game content, entity names, stats,
+and mechanics remain the property of their respective owners. The extracted
+data is included here only to make the project reproducible and is **not
+licensed for redistribution or commercial use**.
+
+The source code in this repository is released under the MIT License (see
+`LICENSE`). The MIT License applies only to the code, not to the game data.
+If you are a rights holder and would like the data removed, please open an
+issue.

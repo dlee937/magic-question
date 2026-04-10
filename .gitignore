@@ -16,3 +16,19 @@ build/
 .idea/
 *.swp
 .DS_Store
+
+# Env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
+
+# Personal scratch files
+*.xlsx
+*.xls
+notes.md
+scratch/
