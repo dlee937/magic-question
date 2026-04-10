@@ -6,19 +6,24 @@ Run: uvicorn api.server:app --host 0.0.0.0 --port 8000
 import sys
 from pathlib import Path
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.bot import MagicGardenBot
+from src.vector_store import VectorStore
 
 app = FastAPI(title="Magic Garden RAG Bot")
+
+# Single shared VectorStore — avoids ChromaDB locking issues
+_store = VectorStore()
 _sessions: dict[str, MagicGardenBot] = {}
+_MAX_SESSIONS = 100
 
 
 class QueryRequest(BaseModel):
-    query: str
+    query: str = Field(max_length=2000)
     session_id: str = "default"
 
 
@@ -33,7 +38,11 @@ class QueryResponse(BaseModel):
 @app.post("/ask", response_model=QueryResponse)
 def ask(req: QueryRequest):
     if req.session_id not in _sessions:
-        _sessions[req.session_id] = MagicGardenBot()
+        # Evict oldest session if at capacity
+        if len(_sessions) >= _MAX_SESSIONS:
+            oldest = next(iter(_sessions))
+            del _sessions[oldest]
+        _sessions[req.session_id] = MagicGardenBot(store=_store)
     bot = _sessions[req.session_id]
     result = bot.debug_answer(req.query)
     return QueryResponse(

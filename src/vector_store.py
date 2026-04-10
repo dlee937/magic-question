@@ -77,7 +77,12 @@ class VectorStore:
     def retrieve(self, query: str, metadata_filters: dict | None = None,
                  n_results: int = MAX_CHUNKS_RETRIEVED) -> list[dict]:
         """Retrieve relevant chunks for a query."""
+        collection_count = self.collection.count()
+        if collection_count == 0:
+            return []
+
         query_embedding = self._embed([query])[0]
+        n_results = min(n_results, collection_count)
 
         kwargs: dict = {
             "query_embeddings": [query_embedding],
@@ -85,19 +90,23 @@ class VectorStore:
             "include": ["documents", "metadatas", "distances"],
         }
 
-        # Build ChromaDB where clause from filters
+        # Pass through pre-built ChromaDB where clause (supports $or/$and)
         if metadata_filters:
-            conditions = []
-            for key, value in metadata_filters.items():
-                conditions.append({key: {"$eq": value}})
-            if len(conditions) == 1:
-                kwargs["where"] = conditions[0]
-            elif len(conditions) > 1:
-                kwargs["where"] = {"$and": conditions}
+            top_keys = set(metadata_filters.keys())
+            if top_keys & {"$or", "$and", "$eq", "$ne", "$gt", "$lt", "$gte", "$lte", "$in", "$nin"}:
+                # Already a ChromaDB clause — pass through
+                kwargs["where"] = metadata_filters
+            else:
+                # Flat dict — wrap each key in $eq
+                conditions = [{k: {"$eq": v}} for k, v in metadata_filters.items()]
+                if len(conditions) == 1:
+                    kwargs["where"] = conditions[0]
+                elif len(conditions) > 1:
+                    kwargs["where"] = {"$and": conditions}
 
         try:
             results = self.collection.query(**kwargs)
-        except Exception:
+        except (chromadb.errors.InvalidArgumentError, chromadb.errors.NotFoundError, ValueError):
             # Filter too restrictive — fall back to unfiltered
             kwargs.pop("where", None)
             results = self.collection.query(**kwargs)

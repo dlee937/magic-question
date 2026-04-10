@@ -52,7 +52,7 @@ python scripts/generate_chunks.py
 
 # ── 8. Index into ChromaDB ──
 echo "→ Indexing chunks (this takes ~2-3 min for embedding)..."
-python scripts/index_chunks.py
+ANONYMIZED_TELEMETRY=False python scripts/index_chunks.py
 
 echo ""
 echo "╔══════════════════════════════════════╗"

@@ -55,8 +55,10 @@ _REGISTRY: dict[str, tuple[str, str]] = {
     "passionfruit": ("PassionFruit", "crop"), "dragon fruit": ("DragonFruit", "crop"),
     "dragonfruit": ("DragonFruit", "crop"), "cacao": ("Cacao", "crop"),
     "lychee": ("Lychee", "crop"), "sunflower": ("Sunflower", "crop"),
-    "starweaver": ("Starweaver", "crop"), "dawnbinder": ("DawnCelestial", "crop"),
-    "moonbinder": ("MoonCelestial", "crop"),
+    "starweaver": ("Starweaver", "crop"),
+    "dawnbinder": ("DawnCelestial", "crop"), "dawn binder": ("DawnCelestial", "crop"),
+    "moonbinder": ("MoonCelestial", "crop"), "moon binder": ("MoonCelestial", "crop"),
+    "chrys": ("Chrysanthemum", "crop"),
 
     # ── MUTATIONS (10) ──
     "wet": ("Wet", "mutation"), "chilled": ("Chilled", "mutation"),
@@ -76,10 +78,14 @@ _REGISTRY: dict[str, tuple[str, str]] = {
     "snow egg": ("SnowEgg", "egg"), "winter egg": ("WinterEgg", "egg"),
     "horse egg": ("HorseEgg", "egg"), "mythical egg": ("MythicalEgg", "egg"),
 
-    # ── TOOLS (key ones) ──
+    # ── TOOLS (11) ──
     "watering can": ("WateringCan", "tool"), "planter pot": ("PlanterPot", "tool"),
     "crop cleanser": ("CropCleanser", "tool"), "shovel": ("Shovel", "tool"),
     "garden shovel": ("Shovel", "tool"),
+    "wet potion": ("WetPotion", "tool"), "chilled potion": ("ChilledPotion", "tool"),
+    "dawnlit potion": ("DawnlitPotion", "tool"), "frozen potion": ("FrozenPotion", "tool"),
+    "amberlit potion": ("AmberlitPotion", "tool"), "gold potion": ("GoldPotion", "tool"),
+    "rainbow potion": ("RainbowPotion", "tool"),
     "feeding trough": ("FeedingTrough", "tool"), "trough": ("FeedingTrough", "tool"),
     "pet hutch": ("PetHutch", "tool"), "seed silo": ("SeedSilo", "tool"),
     "decor shed": ("DecorShed", "tool"),
@@ -92,24 +98,38 @@ INTERNAL_TO_DISPLAY = {
     "PineTree": "Pine Tree", "VioletCort": "Violet Cort", "DragonFruit": "Dragon Fruit",
     "PassionFruit": "Passion Fruit", "DawnCelestial": "Dawnbinder",
     "MoonCelestial": "Moonbinder", "SnowFox": "Snow Fox", "FireHorse": "Fire Horse",
-    "WhiteCaribou": "Caribou", "Frost": "Snow",
+    "WhiteCaribou": "Caribou", "Frost": "Snow", "AmberMoon": "Amber Moon",
+}
+
+# Common irregular plurals → singular (y→ies cases)
+_PLURAL_ALIASES: dict[str, str] = {
+    "butterflies": "butterfly", "bunnies": "bunny", "ponies": "pony",
+    "dragonflies": "dragonfly", "cherries": "cherry",
 }
 
 # Pre-compile: sort by length descending so "fire horse" matches before "horse"
 _SORTED_KEYS = sorted(_REGISTRY.keys(), key=len, reverse=True)
 _PATTERN = re.compile(
-    r'\b(' + '|'.join(re.escape(k) for k in _SORTED_KEYS) + r')\b',
+    r'\b(' + '|'.join(re.escape(k) for k in _SORTED_KEYS) + r')(?:e?s)?\b',
     re.IGNORECASE
 )
 
 
 def find_entities(text: str) -> list[EntityMatch]:
     """Extract all game entities mentioned in user text."""
+    # Normalize irregular plurals before matching
+    normalized = text.lower()
+    for plural, singular in _PLURAL_ALIASES.items():
+        normalized = normalized.replace(plural, singular)
+
     seen_ids: set[str] = set()
     results: list[EntityMatch] = []
-    for match in _PATTERN.finditer(text.lower()):
-        key = match.group(0).lower()
-        internal_id, entity_type = _REGISTRY[key]
+    for match in _PATTERN.finditer(normalized):
+        key = match.group(1).lower()
+        entry = _REGISTRY.get(key)
+        if not entry:
+            continue
+        internal_id, entity_type = entry
         if internal_id in seen_ids:
             continue
         seen_ids.add(internal_id)

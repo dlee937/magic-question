@@ -20,21 +20,69 @@ class QueryAnalysis:
 # (regex, intent_name, embedding_keywords)
 _INTENT_PATTERNS: list[tuple[str, str, str]] = [
     (r'\b(eat|feed|diet|food|hungry|hunger)\b', 'diet', 'diet food crops feeding'),
+    (r'\b(best|optimal|recommend|should i|strategy|guide|tier|rank)\b', 'strategy', 'strategy guide best optimal'),
     (r'\b(sell|price|worth|value|coins?|how much|money|income|profit|rich)\b', 'selling', 'sell price coins value'),
-    (r'\b(abilit|skill|power|does? it do|can .+ do|what does)\b', 'abilities', 'abilities effects skills'),
+    (r'\b(abilit\w*|skill|power|does? it do|can .+ do|what does)\b', 'abilities', 'abilities effects skills'),
     (r'\b(hatch|egg|spawn|chance|percent)\b', 'hatching', 'egg hatch spawn chance'),
     (r'\b(grow|time|long|fast|slow|mature|regrow|harvest)\b', 'growing', 'grow time harvest mature'),
-    (r'\b(mutat|frozen|wet|chilled|gold|rainbow|amberbound|dawnbound|dawnlit|amberlit|thunderstruck)\b',
+    (r'\b(mutat\w*|frozen|wet|chilled|gold|rainbow|amberbound|dawnbound|dawnlit|amberlit|thunderstruck)\b',
      'mutation', 'mutation multiplier weather'),
     (r'\b(weather|rain|snow|thunderstorm|dawn|amber moon|event)\b', 'weather', 'weather event mutation'),
-    (r'\b(best|optimal|recommend|should i|strategy|guide|tier|rank)\b', 'strategy', 'strategy guide best optimal'),
-    (r'\b(journal|variant|collection|complet)\b', 'journal', 'journal variant collection completion'),
-    (r'\b(stack|multiply|combin|additive|multiplicative|maximum)\b',
+    (r'\b(journal|variants?|collection|complet\w*)\b', 'journal', 'journal variant collection completion'),
+    (r'\b(stack|multiply|combin\w*|additive|multiplicative|maximum)\b',
      'multipliers', 'mutation stacking multiplier combination'),
     (r'\b(strength|str|xp|level|experience)\b', 'mechanics', 'strength STR XP mechanics'),
     (r'\b(shop|buy|purchase|store|restock)\b', 'shopping', 'shop buy purchase restock'),
     (r'\b(compare|vs|versus|difference|better)\b', 'comparison', 'compare difference'),
 ]
+
+
+# Maps intent → query_intents metadata values to include via $or
+_INTENT_QUERY_INTENTS: dict[str, list[str]] = {
+    "diet": ["diet"],
+    "selling": ["selling"],
+    "abilities": ["abilities"],
+    "hatching": ["hatching"],
+    "growing": ["growing"],
+    "mutation": ["mutation", "multipliers"],
+    "weather": ["mutation"],
+    "multipliers": ["multipliers", "mutation"],
+    "comparison": ["comparison"],
+    "journal": ["strategy"],  # journal tips live in strategy chunks
+}
+
+# Intents that should also filter by chunk layer
+_INTENT_LAYER: dict[str, str] = {
+    "strategy": "strategy",
+}
+
+
+def _build_filters(entities: list[EntityMatch], intent: str) -> dict | None:
+    """Build a ChromaDB where clause combining entity + intent filters with $or."""
+    conditions: list[dict] = []
+
+    # Entity-specific conditions: match chunks about this entity
+    if entities:
+        primary = entities[0]
+        conditions.append({"entity_name": {"$eq": primary.display_name}})
+        conditions.append({"internal_id": {"$eq": primary.internal_id}})
+
+    # Intent-based conditions: match chunks tagged for this query type
+    intent_values = _INTENT_QUERY_INTENTS.get(intent)
+    if intent_values:
+        for val in intent_values:
+            conditions.append({"query_intents": {"$eq": val}})
+
+    # Layer-based conditions (e.g., strategy → strategy layer)
+    layer = _INTENT_LAYER.get(intent)
+    if layer:
+        conditions.append({"layer": {"$eq": layer}})
+
+    if not conditions:
+        return None
+    if len(conditions) == 1:
+        return conditions[0]
+    return {"$or": conditions}
 
 
 def analyse(query: str, carry_forward_entity: EntityMatch | None = None) -> QueryAnalysis:
@@ -61,16 +109,13 @@ def analyse(query: str, carry_forward_entity: EntityMatch | None = None) -> Quer
     if not embedding_query:
         embedding_query = query
 
-    # Metadata filters for ChromaDB pre-filtering
-    filters: dict = {}
-    if entities:
-        primary = entities[0]
-        filters["entity_type"] = primary.entity_type
+    # Build ChromaDB where clause from entities + intent
+    filters = _build_filters(entities, intent)
 
     return QueryAnalysis(
         raw_query=query,
         entities=entities,
         intent=intent,
         embedding_query=embedding_query,
-        metadata_filters=filters,
+        metadata_filters=filters or {},
     )

@@ -181,7 +181,7 @@
       "name": "Mythical Egg",
       "coinPrice": 1000000000,
       "creditPrice": 599,
-      "rarity": "Mythic",
+      "rarity": "Mythical",
       "secondsToHatch": 86400,
       "spawns": {
         "Butterfly": 75,
@@ -1087,7 +1087,7 @@
       "maturitySellPrice": 150000000,
       "matureWeight": 700,
       "hoursToMature": 144,
-      "rarity": "Mythic",
+      "rarity": "Mythical",
       "abilities": {
         "AmberMoonBoost": 30,
         "PetHatchSizeBoostII": 20,
@@ -1107,7 +1107,7 @@
       "maturitySellPrice": 50000000,
       "matureWeight": 0.2,
       "hoursToMature": 144,
-      "rarity": "Mythic",
+      "rarity": "Mythical",
       "abilities": {
         "ProduceScaleBoostII": 40,
         "ProduceMutationBoostII": 40,
@@ -1128,7 +1128,7 @@
       "maturitySellPrice": 100000000,
       "matureWeight": 5,
       "hoursToMature": 144,
-      "rarity": "Mythic",
+      "rarity": "Mythical",
       "abilities": {
         "SellBoostIV": 40,
         "PetXpBoostII": 50,
@@ -1147,7 +1147,7 @@
       "maturitySellPrice": 200000000,
       "matureWeight": 50,
       "hoursToMature": 144,
-      "rarity": "Mythic",
+      "rarity": "Mythical",
       "abilities": {
         "DoubleHarvest": 50,
         "ProduceRefund": 50
@@ -1222,7 +1222,8 @@
       "maxScale": 3,
       "harvestType": "Multiple",
       "slots": 8,
-      "secondsToMature": 900
+      "secondsToMature": 900,
+      "displayName": "Fava Bean"
     },
     "Delphinium": {
       "seedPrice": 300,
@@ -1349,7 +1350,8 @@
       "maxScale": 3.5,
       "harvestType": "Single",
       "slots": null,
-      "secondsToMature": null
+      "secondsToMature": null,
+      "displayName": "Pine Tree"
     },
     "Banana": {
       "seedPrice": 15000,
@@ -1403,7 +1405,8 @@
       "maxScale": 2.5,
       "harvestType": "Multiple",
       "slots": 2,
-      "secondsToMature": 1800
+      "secondsToMature": 1800,
+      "displayName": "Burro's Tail"
     },
     "Mushroom": {
       "seedPrice": 150000,
@@ -1448,7 +1451,8 @@
       "maxScale": 3.5,
       "harvestType": "Single",
       "slots": null,
-      "secondsToMature": null
+      "secondsToMature": null,
+      "displayName": "Violet Cort"
     },
     "Chrysanthemum": {
       "seedPrice": 670000,
@@ -1493,7 +1497,8 @@
       "maxScale": 2,
       "harvestType": "Multiple",
       "slots": 2,
-      "secondsToMature": 86400
+      "secondsToMature": 86400,
+      "displayName": "Passion Fruit"
     },
     "DragonFruit": {
       "seedPrice": 5000000,
@@ -1502,7 +1507,8 @@
       "maxScale": 2,
       "harvestType": "Multiple",
       "slots": 7,
-      "secondsToMature": 600
+      "secondsToMature": 600,
+      "displayName": "Dragon Fruit"
     },
     "Cacao": {
       "seedPrice": 10000000,
@@ -1594,7 +1600,7 @@
     "WetPotion": {
       "name": "Wet Potion",
       "coinPrice": 1000000001,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Common",
       "oneTime": true,
       "mutation": "Wet"
@@ -1602,7 +1608,7 @@
     "ChilledPotion": {
       "name": "Chilled Potion",
       "coinPrice": 1000000002,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Common",
       "oneTime": true,
       "mutation": "Chilled"
@@ -1610,7 +1616,7 @@
     "DawnlitPotion": {
       "name": "Dawnlit Potion",
       "coinPrice": 1000000003,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Uncommon",
       "oneTime": true,
       "mutation": "Dawnlit"
@@ -1625,7 +1631,7 @@
     "FrozenPotion": {
       "name": "Frozen Potion",
       "coinPrice": 1000000004,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Rare",
       "oneTime": true,
       "mutation": "Frozen"
@@ -1633,7 +1639,7 @@
     "AmberlitPotion": {
       "name": "Amberlit Potion",
       "coinPrice": 1000000005,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Rare",
       "oneTime": true,
       "mutation": "Ambershine"
@@ -1641,7 +1647,7 @@
     "GoldPotion": {
       "name": "Gold Potion",
       "coinPrice": 1000000006,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Legendary",
       "oneTime": true,
       "mutation": "Gold"
@@ -1649,7 +1655,7 @@
     "RainbowPotion": {
       "name": "Rainbow Potion",
       "coinPrice": 1000000007,
-      "creditPrice": "inf",
+      "creditPrice": null,
       "rarity": "Celestial",
       "oneTime": true,
       "mutation": "Rainbow"
